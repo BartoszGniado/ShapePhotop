@@ -18,8 +18,33 @@ namespace ShapePhoto
         public int parentID;
         int ShapeNum;
 		Random r;
-       public Aprox(int ShapeNum,Image orginal, int seed, int id)
+       public int Generation;
+        public Aprox(Aprox apx)
         {
+            score = apx.score;
+            Generation = apx.Generation;
+            rectangles = new List<Rectangle>();
+            brushes = new List<SolidBrush>();
+            r = new Random(apx.r.Next());
+            this.parentID = apx.parentID;
+            ShapeNum = apx.ShapeNum;
+            ImageWidth = apx.ImageWidth;
+            ImageHeight = apx.ImageHeight;
+            madeImage = new Bitmap(apx.madeImage);
+            // rectangles =apx.rectangles;
+            rectangles.Clear();
+            foreach (Rectangle re in apx.rectangles)
+                rectangles.Add(new Rectangle(re.X, re.Y, re.Width, re.Height));
+            //    brushes = apx.brushes;
+            brushes.Clear();
+            foreach (SolidBrush sb in apx.brushes)
+                brushes.Add(new SolidBrush(sb.Color));
+
+        }
+
+        public Aprox(int ShapeNum,Image orginal, int seed, int id)
+        {
+            Generation = 0;
 			r=new Random(seed);
             this.parentID = id;
             this.ShapeNum = ShapeNum;
@@ -45,8 +70,9 @@ namespace ShapePhoto
 
             SetScore(orginal);
         }
-        public Aprox(Aprox apx, Image orginal, int seed,int id)
+       public Aprox(Aprox apx, Image orginal, int seed,int id)
         {
+            Generation = apx.Generation++;
             rectangles = new List<Rectangle>();
             brushes = new List<SolidBrush>();
             r =new Random(seed);
@@ -160,24 +186,64 @@ namespace ShapePhoto
         {
             Rectangle rec = rectangle;
             double tmp=r.NextDouble();
-            if (tmp > 0.4)
+            if (tmp > 0.3)
             {
                 if (r.NextDouble() > 0.5)
                 {
-                    do
+                    if (r.NextDouble() > 0.5)
                     {
-                        rec.Height = (int)Math.Floor(rec.Height * (r.NextDouble() + 0.5) );
-                    } while (rec.Height+rec.Y > ImageHeight);
+                        do
+                        {
+                            rec.Height = (int)Math.Floor(rec.Height * (r.NextDouble() + 0.5));
+                        } while (rec.Height + rec.Y > ImageHeight);
+                    }
+                    else
+                    {
+                        do
+                        {
+                            int change = (int)Math.Floor(rec.Height * (r.NextDouble() + 0.5));
+                            if (r.NextDouble() > 0.5)
+                            {
+                                rec.Height += change;
+                                rec.Y -= change;
+                            }
+                            else
+                            {
+                                rec.Height -= change;
+                                rec.Y += change;
+                            }
+                        } while (rec.Height + rec.Y > ImageHeight && rec.Y>0);
+                    }
                 }
                 else
                 {
-                    do
+                    if (r.NextDouble() > 0.5)
                     {
-                        rec.Width = (int)Math.Floor(rec.Width * (r.NextDouble() + 0.5));
-                    } while (rec.Width + rec.X > ImageWidth);
+                        do
+                        {
+                            rec.Width = (int)Math.Floor(rec.Width * (r.NextDouble() + 0.5));
+                        } while (rec.Width + rec.X > ImageWidth);
+                    }
+                    else
+                    {
+                        do
+                        {
+                            int change = (int)Math.Floor(rec.Width * (r.NextDouble() + 0.5));
+                            if (r.NextDouble() > 0.5)
+                            {
+                                rec.Width += change;
+                                rec.X -= change;
+                            }
+                            else
+                            {
+                                rec.Width -= change;
+                                rec.X += change;
+                            }
+                        } while (rec.Width + rec.X > ImageWidth && rec.X>0);
+                    }
                 }
             }
-            if (tmp < 0.55)
+            if (tmp < 0.33)
             {
                 if (r.NextDouble() > 0.5)
                 {

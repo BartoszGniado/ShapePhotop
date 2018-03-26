@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,6 +52,8 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ShowCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
@@ -81,6 +84,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ShowCheckBox);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.numericUpDown4);
             this.tabPage1.Controls.Add(this.label4);
@@ -111,6 +115,11 @@
             // numericUpDown4
             // 
             this.numericUpDown4.Location = new System.Drawing.Point(129, 118);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDown4.Minimum = new decimal(new int[] {
             1,
             0,
@@ -153,8 +162,9 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(740, 355);
+            this.button2.Location = new System.Drawing.Point(869, 369);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(203, 87);
             this.button2.TabIndex = 5;
@@ -174,6 +184,11 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(129, 82);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
             0,
@@ -241,6 +256,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.numericUpDown2);
@@ -258,7 +274,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1018, 454);
+            this.label3.Location = new System.Drawing.Point(1017, 419);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 5;
@@ -266,7 +282,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1018, 473);
+            this.button3.Location = new System.Drawing.Point(1017, 438);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 23);
             this.button3.TabIndex = 4;
@@ -277,7 +293,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.Location = new System.Drawing.Point(1018, 431);
+            this.numericUpDown2.Location = new System.Drawing.Point(1017, 396);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -298,7 +314,7 @@
             this.Scores.FormattingEnabled = true;
             this.Scores.Location = new System.Drawing.Point(1017, 6);
             this.Scores.Name = "Scores";
-            this.Scores.Size = new System.Drawing.Size(115, 420);
+            this.Scores.Size = new System.Drawing.Size(115, 381);
             this.Scores.TabIndex = 2;
             this.Scores.SelectedIndexChanged += new System.EventHandler(this.Scores_SelectedIndexChanged);
             // 
@@ -341,14 +357,33 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1017, 464);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 13);
+            this.label6.TabIndex = 6;
+            // 
+            // ShowCheckBox
+            // 
+            this.ShowCheckBox.AutoSize = true;
+            this.ShowCheckBox.Location = new System.Drawing.Point(25, 199);
+            this.ShowCheckBox.Name = "ShowCheckBox";
+            this.ShowCheckBox.Size = new System.Drawing.Size(59, 17);
+            this.ShowCheckBox.TabIndex = 10;
+            this.ShowCheckBox.Text = "Show()";
+            this.ShowCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 553);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ShapePhoto.2.2";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -391,6 +426,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox ShowCheckBox;
     }
 }
 
