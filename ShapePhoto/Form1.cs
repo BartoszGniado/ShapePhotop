@@ -99,7 +99,7 @@ namespace ShapePhoto
             Thread t1 = MakeThread(AproxesCopy, orginl, numCopy, ShapeNumCopy, ShapeNumMinCopy, rndCopy, podzialIDCopy);
 
 
-            //   t1.Start();
+               t1.Start();
             num2--;
             for (int i=0;i<num;i++,num2--)//, numericUpDown2.Value--)
             {
@@ -156,7 +156,7 @@ namespace ShapePhoto
                 }
                 
             }
-          //  t1.Join();
+            t1.Join();
             for (int i = 0; i < podzialID; i++)
             {
                 Aproxes[i] = AproxesCopy[i];
